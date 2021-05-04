@@ -2,11 +2,42 @@
 
 // TODO: Find out what is in the large header
 #define HEADER_SIZE 0x8160UL//0x8154
+
+#define DIFFICULTY 0x28UL
+#define TEXT_LANG 0x74UL
+#define VOICEOVER 0x78UL
+
 #define SAVE_SIZE 0x9250UL//0x925C
 #define SAVE1_LOCATION 0x8160UL//0x8154U
 #define SAVE2_LOCATION 0x113B0UL
 #define SAVE3_LOCATION 0x1A610UL
 // TODO: Find out what is in the large footer
+
+typedef enum
+{
+	DEasy = 0,
+	DNormal,
+	DHard
+}Difficulty;
+
+typedef enum VO_Language
+{
+	VOJapanese = 0,
+	VOEnglish
+}VO_Language;
+
+typedef enum TextLanguage
+{
+	TLJapanese = 0,
+	TLEnglish,
+	TLFrench,
+	TLGerman,
+	TLItalian,
+	TLSpanish,
+	TLSimpChinese,
+	TLTradChinese,
+	TLKorean
+}TextLanguage;
 
 static const char* GAMESAVE_NAME = "GAMEDATA";
 
