@@ -6,6 +6,7 @@
 #define DIFFICULTY 0x28UL
 #define TEXT_LANG 0x74UL
 #define VOICEOVER 0x78UL
+#define KEYBOARD_CONTROLS 0x134UL
 
 #define SAVE_SIZE 0x9250UL//0x925C
 #define SAVE1_LOCATION 0x8160UL//0x8154U
@@ -18,13 +19,13 @@ typedef enum
 	DEasy = 0,
 	DNormal,
 	DHard
-}Difficulty;
+} Difficulty;
 
 typedef enum VO_Language
 {
 	VOJapanese = 0,
 	VOEnglish
-}VO_Language;
+} VO_Language;
 
 typedef enum TextLanguage
 {
@@ -37,7 +38,24 @@ typedef enum TextLanguage
 	TLSimpChinese,
 	TLTradChinese,
 	TLKorean
-}TextLanguage;
+} TextLanguage;
+
+// kb controls 134h - 14dh
+
+typedef struct
+{
+	char magicNumber[1]; // 6E
+	char array1[0x27]; // ???
+	char difficulty[1];
+	char array2[0x4B]; // ???
+	char textLanguage[1];
+	char array3[3]; // ???
+	char voiceoverLanguage[1];
+	char kb_controls[26];
+	char controller_controls[13]; // Not sure about this one yet
+	char array4[0x121]; // ???
+	char padding[1];
+} Header;
 
 static const char* GAMESAVE_NAME = "GAMEDATA";
 
